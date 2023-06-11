@@ -1,6 +1,5 @@
 import { Configuration, OpenAIApi } from "openai";
 import extract from "extract-json-from-string";
-
 import env from "./env.json" assert { type: "json" };
 
 const configuration = new Configuration({

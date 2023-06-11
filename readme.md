@@ -1,56 +1,48 @@
-# GPTRPG
+# Celaya-GPT - README.md
 
-![map of the game](map.png)
+This repository includes:
 
-This repo contains two things:
-
-* A simple RPG-like environment for an LLM-enabled AI Agent to exist in
-* A simple AI Agent connected to the OpenAI API to exist in that environment
-
-It is intended as a proof of concept.
+* A simple RPG-style environment for an LLM-powered AI agent to inhabit
+* A basic AI agent utilizing the OpenAI API to function within the environment
 
 ## Running
 
-GPTRPG is intended to be run locally. To run:
+GPTRPG is designed for local execution. Follow these steps to run it:
 
-1. Make sure you have updated the `agent/env.json` file with your OpenAI API key.  
-2. Only tested with node 16.19.0 
-2. In the `gptrpg` directory run `npm install` to install dependencies for all projects.
-3. Then run `npm start` in the root directory.  This will start the agent and the front-end.  The front-end will be available at `http://localhost:3000`.
+1. Update the `agent/env.json` file with your OpenAI API key.
+2. This has solely been tested using Node 16.19.0.
+3. In the `gptrpg` directory, execute `npm install` to install dependencies for all projects.
+4. Run `npm start` in the root directory. This will launch the agent and the front-end, accessible at `http://localhost:3000`.
 
 ## The Environment
-Code for the environment lives in the `ui-admin` directory. It is a React project.
-
-The environment was made with [Tiled](https://www.mapeditor.org/) map editor.  The files live in `ui-admin/src/assets`.
-
-The environment is rendered with [Phaser](https://phaser.io/) and the [Grid Engine Plugin](https://annoraaq.github.io/grid-engine/)
+- Environment code resides in the `ui-admin` directory, structured as a React project.
+- The environment is created using the Tiled map editor, with files located in `ui-admin/src/assets`.
+- Rendering of the environment employs Phaser and the Grid Engine Plugin.
 
 The environment consists of:
 
 * The character (agent)
 * Impassable tiles
-* A plant layer with "plantable" tiles, and plants (not currently in use by agent).  Player can plant food on plantable tiles with S key and harvest food with D key.
+* A layer with "plantable" tiles and plants (not currently utilized by the agent). Players can plant food on plantable tiles using the 'S' key and harvest food with the 'D' key.
 
-## The Agent
-Code for the agent lives in the `agent` directory.
+## The AI Agent
 
-The agent is a simple AI agent that uses the OpenAI API to make decisions.  It communicates with the front-end via a websocket.
+- The AI agent's code in the `agent` directory.
+- The agent is a basic AI that leverages the OpenAI API to make informed decisions. Communication with the front-end is achieved via a websocket.
+- The agent is given various actions to choose from, along with the state of its environment and its internal state (currently only tracking sleepiness).
 
-The agent is provided with a list of possible actions, the state of its surroundings, and its internal state (currently only sleepiness is measured).
+## Upcoming Features
 
-## Upcoming features
-
-* Multi agent support
-* More agent actions (drink, eat, plant food, harvest food, write poetry, etc.)
+* Support for multiple agents
+* Additional agent actions (drink, eat, plant food, harvest food, compose poetry, etc.)
 * More agent states (hunger, thirst, etc.)
 * Agent memory
-* Agent goals
+* Agent objectives
 * Agent inventory
-* Deployment to web
-* Human controlled character
-* UI enhancements (agent state, human interactions, etc.)
+* Web deployment
+* Human-controlled character
+* UI improvements (agent state display, human interactions, etc.)
 
-## Notes
+## Additional Information
 
-Currently, GPTRPG runs with the `gpt-3.5-turbo` API.
-
+Currently, GPTRPG functions with the `gpt-3.5-turbo` API.
