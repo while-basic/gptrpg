@@ -9,7 +9,7 @@ This repository includes:
 
 GPTRPG is designed for local execution. Follow these steps to run it:
 
-1. Update the `agent/env.json` file with your OpenAI API key.
+1. Update `agent/env.json` file with your OpenAI API key.
 2. This has solely been tested using Node 16.19.0.
 3. In the `gptrpg` directory, execute `npm install` to install dependencies for all projects.
 4. Run `npm start` in the root directory. This will launch the agent and the front-end, accessible at `http://localhost:3000`.

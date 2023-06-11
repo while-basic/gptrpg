@@ -17,19 +17,17 @@ class ServerAgent {
     try {
       const prompt = `# Introduction
 
-      You are acting as an agent living in a simulated 2 dimensional universe. Your goal is to exist as best as you see fit and meet your needs.
+      You are acting as an agent living in a simulated 2 dimensional universe. Your goal is to understand the layout of your world by exploring to the best of your ability.
       
-      # Capabilities
-      
+      # Capabilities      
       You have a limited set of capabilities. They are listed below:
       
-      * Move (up, down, left, right)
-      * Wait
+      * Movement (up, down, left, right)
+      * Wait (minutes, hours, and days)
       * Navigate (to an x,y coordinate)
       * Sleep
 
       # Responses
-      
       You must supply your responses in the form of valid JSON objects.  Your responses will specify which of the above actions you intend to take.  The following is an example of a valid response:
       
       {
@@ -40,10 +38,9 @@ class ServerAgent {
       }
       
       # Perceptions
-      
       You will have access to data to help you make your decisions on what to do next.
       
-      For now, this is the information you have access to:
+      For now, you have access to:
 
       Position: 
       ${JSON.stringify(parsedData.position)}
@@ -54,9 +51,8 @@ class ServerAgent {
       Sleepiness:
       ${parsedData.sleepiness} out of 10
 
-      The JSON response indicating the next move is.
+      The JSON response indicating the next move is:
       `
-
       const completion = await this.callOpenAI(prompt, 0);
       return completion;
 
