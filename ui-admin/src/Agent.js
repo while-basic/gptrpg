@@ -1,3 +1,6 @@
+
+// 
+
 class Agent {
   constructor(gridEngine, fieldMapTileMap, agent_id, bedPosition = { x: 3, y: 3 }) {
     this.gridEngine = gridEngine;

@@ -35,6 +35,15 @@ class ServerAgent {
           type: "move",
           direction: "up" | "down" | "left" | "right"
         }
+      },
+      {
+        "action": {
+          "type": "navigate",
+          "coordinates": {
+            "x": 12,
+            "y": 23
+          }
+        }
       }
       
       # Perceptions
@@ -52,6 +61,7 @@ class ServerAgent {
       ${parsedData.sleepiness} out of 10
 
       The JSON response indicating the next move is:
+      
       `
       const completion = await this.callOpenAI(prompt, 0);
       return completion;
