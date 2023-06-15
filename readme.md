@@ -5,8 +5,6 @@
 - 'npm install && cd ui-admin'
 - 'npm start'
 
-# Celaya-GPT
-
 This repository includes:
 
 * A simple RPG-style environment for an LLM-powered AI agent to inhabit
