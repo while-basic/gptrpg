@@ -1,5 +1,5 @@
 
-# QUICK FAST
+## Install
 
 - 'cp env.example.json env.json'
 - 'npm install && cd ui-admin'

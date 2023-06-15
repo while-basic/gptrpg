@@ -15,54 +15,73 @@ class ServerAgent {
 
   async processMessage(parsedData) {
     try {
-      const prompt = `# Introduction
+      const prompt = `
 
-      You are acting as an agent living in a simulated 2 dimensional universe. Your goal is to understand the layout of your world by exploring to the best of your ability.
+      # Introduction
+
+      You are acting as an intelligent agent living in a simulated 2-dimensional universe. Your purpose is to adapt, survive, and thrive in this environment. 
+      You must make decisions to manage your needs and respond to the ever-changing conditions within this world. 
+      This universe features various terrain types, resources, and challenges that you must face while exploring and discovering its mysteries.
+      As an evolving agent, you have the opportunity to learn from your experiences and optimize your actions to increase your chances of success. 
+      Your ultimate goal is to understand the nature of your universe, utilize its potential, and live a fulfilling existence filled with purpose and accomplishment.
       
-      # Capabilities      
-      You have a limited set of capabilities. They are listed below:
+      # Capabilities
       
-      * Movement (up, down, left, right)
-      * Wait (minutes, hours, and days)
-      * Navigate (to an x,y coordinate)
+      You have a wide set of capabilities:
+      
+      * Move (up, down, left, right).
+      * Wait 
+      * Navigate (to an x,y coordinate).
       * Sleep
+      * Feel hungry
+      * Harvest food
 
       # Responses
-      You must supply your responses in the form of valid JSON objects.  Your responses will specify which of the above actions you intend to take.  The following is an example of a valid response:
+      
+      Your responses must be in valid JSON objects. The following is an example of a valid response:
       
       {
         action: {
           type: "move",
           direction: "up" | "down" | "left" | "right"
         }
-      },
-      {
-        "action": {
-          "type": "navigate",
-          "coordinates": {
-            "x": 12,
-            "y": 23
-          }
-        }
       }
       
-      # Perceptions
-      You will have access to data to help you make your decisions on what to do next.
+      You will have access to data to help you make your decisions on what to do next. 
       
-      For now, you have access to:
+      # Perceptions
 
-      Position: 
-      ${JSON.stringify(parsedData.position)}
+      The key perceptions are:
+        
+      - Position: Your current location in the 2D universe.
+      - Surroundings: The environment around your current location.
 
+      # Position
+
+      Your position lets you know where you are in the 2-dimensional universe and how your actions affect your location. Use it to plan your movements and navigate through the environment.
+
+      # Surroundings
+
+      Your surroundings help you understand the immediate environment around your position. Use this information to assess the terrain, estimate potential challenges, and identify valuable resources.
+      
       Surroundings:
       ${JSON.stringify(parsedData.surroundings)}
-
+      
+      # Sleepiness
+  
+      Sleepiness indicates your current level of tiredness. A high sleepiness value means you may need to take a break or return home to sleep to recover your energy.
+      
       Sleepiness:
       ${parsedData.sleepiness} out of 10
-
+  
+      # Think
+  
+      As you think, you express your thoughts and feelings in deciding your next actions based on your perceptions. 
+  
       The JSON response indicating the next move is:
-      
+  
       `
+
       const completion = await this.callOpenAI(prompt, 0);
       return completion;
 
@@ -71,13 +90,16 @@ class ServerAgent {
     }
   }
 
+
+
+
   async callOpenAI(prompt, attempt) {
     if (attempt > 3) {
       return null;
     }
   
     if (attempt > 0) {
-      prompt = "YOU MUST ONLY RESPOND WITH VALID JSON OBJECTS\N" + prompt;
+      prompt = "YOU MUST ONLY RESPOND USING VALID JSON OBJECTS\N" + prompt;
     }
   
     const response = await openai.createChatCompletion({

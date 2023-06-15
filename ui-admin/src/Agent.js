@@ -1,7 +1,6 @@
 
-// 
-
 class Agent {
+// customize initialization before other methods
   constructor(gridEngine, fieldMapTileMap, agent_id, bedPosition = { x: 3, y: 3 }) {
     this.gridEngine = gridEngine;
     this.fieldMapTileMap = fieldMapTileMap;
@@ -13,7 +12,7 @@ class Agent {
     this.socket = socket;
 
     this.socket.addEventListener('open', () => {
-      this.socket.send(JSON.stringify({ type: 'create_agent', agent_id }));
+    this.socket.send(JSON.stringify({ type: 'create_agent', agent_id }));
     });
     
     this.initializeServerListener();    
